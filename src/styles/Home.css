@@ -13,11 +13,13 @@ body {
 }
 
 /* ==================== THEME VARIABLES ==================== */
+
 .home {
   min-height: 100vh;
   position: relative;
   transition: background 0.5s ease;
   overflow-x: hidden;
+  z-index: 0;
 }
 
 /* Light Theme */
@@ -560,6 +562,7 @@ body {
   -webkit-backdrop-filter: blur(40px);
   transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
+  will-change: transform, opacity;
 }
 
 .home.light .featured-card {
@@ -590,8 +593,9 @@ body {
 .carousel-card.carousel-center {
   z-index: 50;
   opacity: 1;
-  transform: translate(-50%, -50%) scale(1) rotateY(0deg) translateZ(0px);
+  transform: translate(-50%, -50%) scale(1) rotateY(0deg) translateZ(0);
   pointer-events: all;
+  position: relative;
 }
 
 .home.light .carousel-card.carousel-center {
@@ -609,25 +613,25 @@ body {
 .carousel-card.carousel-left {
   z-index: 30;
   opacity: 0.6;
-  transform: translate(-50%, -50%) translateX(-450px) scale(0.8) rotateY(25deg) translateZ(-150px);
-  pointer-events: all;
+  transform: translate(-50%, -50%) translateX(-420px) scale(0.8) rotateY(25deg) translateZ(-150px);
+  pointer-events: auto;
 }
 
 .carousel-card.carousel-left:hover {
   opacity: 0.8;
-  transform: translate(-50%, -50%) translateX(-450px) scale(0.85) rotateY(20deg) translateZ(-120px);
+  transform: translate(-50%, -50%) translateX(-420px) scale(0.85) rotateY(20deg) translateZ(-120px);
 }
 
 .carousel-card.carousel-right {
   z-index: 30;
   opacity: 0.6;
-  transform: translate(-50%, -50%) translateX(450px) scale(0.8) rotateY(-25deg) translateZ(-150px);
-  pointer-events: all;
+  transform: translate(-50%, -50%) translateX(420px) scale(0.8) rotateY(-25deg) translateZ(-150px);
+  pointer-events: auto;
 }
 
 .carousel-card.carousel-right:hover {
   opacity: 0.8;
-  transform: translate(-50%, -50%) translateX(450px) scale(0.85) rotateY(-20deg) translateZ(-120px);
+  transform: translate(-50%, -50%) translateX(420px) scale(0.85) rotateY(-20deg) translateZ(-120px);
 }
 
 .carousel-card.carousel-far-left {
@@ -905,6 +909,8 @@ body {
 
 .value-card:nth-child(4) {
   position: relative;
+  grid-row: span 2;
+  min-height: 300px;
 }
 
 .value-card:nth-child(4) .card-visual {
@@ -913,8 +919,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
   height: 100%;
-  border-radius: 0;
+  border-radius: 16px 16px 0 0;
 }
 
 .card-visual::after {
@@ -975,18 +982,15 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  
-  /* ✅ CORRECTED GRADIENT - Purple/dark overlay that works in both themes */
   background: linear-gradient(
     to top,
-    rgba(88, 28, 135, 0.92) 0%,      /* Deep purple at bottom */
-    rgba(88, 28, 135, 0.75) 35%,     /* Purple gradient */
-    rgba(88, 28, 135, 0.45) 60%,     /* Lighter purple */
-    rgba(88, 28, 135, 0.15) 80%,     /* Very light */
-    transparent 100%                  /* Fully transparent at top */
+    rgba(30, 41, 59, 0.95) 0%,
+    rgba(30, 41, 59, 0.85) 40%,
+    rgba(30, 41, 59, 0.6) 70%,
+    transparent 100%
   );
-  
-  padding: 60px 20px 20px;
+  padding: 80px 20px 20px;
+  z-index: 2;
 }
 
 /* Alternative gradient using black (if you prefer darker) */
@@ -1300,18 +1304,13 @@ body {
 
 
 .footer-main {
-  padding: 48px 40px 36px;  
+  padding: 48px 40px 36px;
   display: flex;
   justify-content: space-between;
-
+  align-items: flex-start;
   position: relative;
-}
-.footer-inner {
-  max-width: 1400px;     /* NEW */
-  margin: 0 auto;       /* NEW */
-  padding: 0 40px;      /* NEW */
-  display: flex;
-  justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 
@@ -1342,7 +1341,8 @@ body {
 
 .footer-columns {
   display: flex;
-  gap: 64px;
+  gap: 80px;
+  flex: 1;
 }
 
 .footer-column {
@@ -1389,6 +1389,8 @@ body {
   flex-direction: column;
   align-items: flex-end;
   gap: 14px;
+  flex-shrink: 0;
+  margin-left: 40px;
 }
  
 
@@ -1474,16 +1476,17 @@ body {
 
 .footer-watermark {
   position: absolute;
-  bottom: 18px;              /* CHANGED */
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 900;
-  letter-spacing: 0.06em;
-  opacity: 0.5;             /* CHANGED */
-  filter: blur(1.5px);       /* NEW */
+  letter-spacing: 0.08em;
+  opacity: 0.08;
+  filter: blur(2px);
   pointer-events: none;
   white-space: nowrap;
+  z-index: 0;
 }
 
 

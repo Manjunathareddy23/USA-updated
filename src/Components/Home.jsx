@@ -136,20 +136,16 @@ const Home = () => {
                 </Link>
                 <button className="btn-theme" onClick={toggleTheme} aria-label="Toggle theme">
                   {isDark ? (
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="9" cy="9" r="3.5" />
-                      <line x1="9" y1="1" x2="9" y2="2.5" />
-                      <line x1="9" y1="15.5" x2="9" y2="17" />
-                      <line x1="3.2" y1="3.2" x2="4.3" y2="4.3" />
-                      <line x1="13.7" y1="13.7" x2="14.8" y2="14.8" />
-                      <line x1="1" y1="9" x2="2.5" y2="9" />
-                      <line x1="15.5" y1="9" x2="17" y2="9" />
-                      <line x1="3.2" y1="14.8" x2="4.3" y2="13.7" />
-                      <line x1="13.7" y1="4.3" x2="14.8" y2="3.2" />
+                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2">
+                      <circle cx="9" cy="9" r="3.5" /><line x1="9" y1="1" x2="9" y2="2.5" /><line x1="9" y1="15.5" x2="9" y2="17" />
+                      <line x1="3.2" y1="3.2" x2="4.3" y2="4.3" /><line x1="13.7" y1="13.7" x2="14.8" y2="14.8" />
+                      <line x1="1" y1="9" x2="2.5" y2="9" /><line x1="15.5" y1="9" x2="17" y2="9" />
+                      <line x1="3.2" y1="14.8" x2="4.3" y2="13.7" /><line x1="13.7" y1="4.3" x2="14.8" y2="3.2" />
                     </svg>
                   ) : (
-                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M12 3C10.3431 3 8.8043 3.8043 7.75736 4.75736C6.71043 5.71043 6 6.9875 6 8.5C6 10.0125 6.71043 11.2896 7.75736 12.2426C8.8043 13.1957 10.3431 14 12 14C13.6569 14 15.1957 13.1957 16.2426 12.2426C17.2896 11.2896 18 10.0125 18 8.5C18 6.9875 17.2896 5.71043 16.2426 4.75736C15.1957 3.8043 13.6569 3 12 3Z" />
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor">
+                      <path d="M9 1a8 8 0 100 16A8 8 0 009 1zm0 14A6 6 0 119 3a6 6 0 010 12z" opacity="0.3"/>
+                      <path d="M15.5 9A6.5 6.5 0 019 15.5V2.5A6.5 6.5 0 0115.5 9z"/>
                     </svg>
                   )}
                    

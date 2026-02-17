@@ -3,48 +3,54 @@
 @import './Home.css';
 
 /* ==================== COURSE DETAIL PAGE ==================== */
+/* Reference: Course_Detail_-_Light.png
+   Layout:
+   1. Hero card: teal/green "Course" badge, large two-tone bold title 
+      "Getting started with / Google Sheets", 
+      3 meta pills (15 Lessons | 10 hours | 2 Projects),
+      "← Back to Courses" link
+   2. Overview table: left-bold labels + right text (Who, What, Prerequisites)
+   3. Module grid: 3-col auto grid of module cards (each with coloured 3D image,
+      Module badge top-left, title, "Read now →" link)
+   4. Resources section: "Resources" heading + same 2-col resource card grid
+      + "View all →"
+*/
+
 .course-detail-page {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
 
-/* ==================== HERO SECTION ==================== */
+/* ==================== HERO ==================== */
 .course-detail-hero {
   position: relative;
-  padding: 140px 24px 60px;
+  padding: 120px 24px 60px;
   text-align: center;
   z-index: 1;
 }
 
 .hero-content-detail {
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
+/* Teal/green "Course" badge */
 .hero-badge-detail {
   display: inline-block;
-  padding: 8px 20px;
+  padding: 6px 18px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 20px;
+  background: #0d9488;
+  color: #ffffff;
+  letter-spacing: 0.02em;
 }
 
-.course-detail-page.light .hero-badge-detail {
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #3b82f6;
-}
-
-.course-detail-page.dark .hero-badge-detail {
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  color: #60a5fa;
-}
-
+/* Two-tone large title: first line bold dark, second line grey */
 .hero-title-detail {
-  font-size: 48px;
+  font-size: 46px;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.03em;
@@ -59,16 +65,25 @@
   color: #ffffff;
 }
 
+/* Second title line in grey */
+.hero-title-detail .title-muted {
+  color: #94a3b8;
+}
+
+/* Meta pills row: Lessons | clock+hours | Projects */
 .course-meta-hero {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 24px;
   flex-wrap: wrap;
 }
 
 .meta-pill-hero {
-  padding: 8px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 500;
@@ -81,16 +96,20 @@
 }
 
 .course-detail-page.dark .meta-pill-hero {
-  background: rgba(30, 41, 59, 0.6);
+  background: rgba(30, 41, 59, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #9ca3af;
 }
 
+/* "← Back to Courses" link */
 .back-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 14px;
   text-decoration: none;
   transition: all 0.3s ease;
+  font-weight: 500;
 }
 
 .course-detail-page.light .back-link {
@@ -107,56 +126,36 @@
 }
 
 /* ==================== OVERVIEW SECTION ==================== */
+/* Two-column table-like layout: bold label left, text right */
 .overview-section {
   position: relative;
-  padding: 60px 24px;
+  padding: 56px 24px 48px;
   z-index: 1;
 }
 
 .container-detail {
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.overview-grid {
+/* Each overview row */
+.overview-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+  align-items: start;
 }
 
-.overview-item {
-  padding: 28px;
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
-}
-
-.course-detail-page.light .overview-item {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-}
-
-.course-detail-page.light .overview-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
-
-.course-detail-page.dark .overview-item {
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
-}
-
-.course-detail-page.dark .overview-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+.overview-row:last-child {
+  border-bottom: none;
 }
 
 .overview-label {
   font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .course-detail-page.light .overview-label {
@@ -169,8 +168,7 @@
 
 .overview-text {
   font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 8px;
+  line-height: 1.65;
 }
 
 .course-detail-page.light .overview-text {
@@ -181,127 +179,131 @@
   color: #9ca3af;
 }
 
-.overview-text-bold {
+/* List items inside overview (prerequisites) */
+.overview-text ul,
+.overview-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.overview-list li {
   font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
+  line-height: 1.65;
 }
 
-.course-detail-page.light .overview-text-bold {
-  color: #111827;
+.course-detail-page.light .overview-list li {
+  color: #6b7280;
 }
 
-.course-detail-page.dark .overview-text-bold {
-  color: #ffffff;
+.course-detail-page.dark .overview-list li {
+  color: #9ca3af;
 }
 
-/* ==================== MODULES SECTION ==================== */
+/* ==================== MODULES GRID ==================== */
+/* 3-col auto-fill grid of module cards with coloured 3D image headers */
 .modules-section {
   position: relative;
-  padding: 60px 24px;
+  padding: 48px 24px 56px;
   z-index: 1;
 }
 
 .modules-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
+/* Individual module card */
 .module-card {
-  border-radius: 20px;
+  border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.35s ease;
   position: relative;
   text-decoration: none;
   display: block;
 }
 
 .course-detail-page.light .module-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .course-detail-page.light .module-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.10);
 }
 
 .course-detail-page.dark .module-card {
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
 .course-detail-page.dark .module-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.5);
 }
 
+/* Teal "Module N" badge top-left */
 .module-badge {
   position: absolute;
   top: 12px;
   left: 12px;
-  padding: 5px 12px;
-  background: #3b82f6;
+  padding: 4px 11px;
+  background: #0d9488;
   color: white;
-  border-radius: 14px;
-  font-size: 11px;
+  border-radius: 999px;
+  font-size: 10px;
   font-weight: 600;
   z-index: 2;
+  letter-spacing: 0.02em;
 }
 
+/* Coloured 3D image header area */
 .module-image {
-  height: 180px;
-  transition: transform 0.5s ease;
+  height: 160px;
+  transition: transform 0.45s ease;
   position: relative;
+  overflow: hidden;
 }
 
 .module-card:hover .module-image {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Module Image Gradients */
-.module-module-1 {
-  background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+/* Module image: use real img if provided, else gradient background */
+.module-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.module-module-2 {
-  background: linear-gradient(135deg, #3b82f6 0%, #60a5fa 100%);
-}
+/* Gradient backgrounds per module */
+.module-module-1 { background: linear-gradient(135deg, #1f2937 0%, #4b5563 100%); }
+.module-module-2 { background: linear-gradient(135deg, #075985 0%, #0369a1 100%); }
+.module-module-3 { background: linear-gradient(135deg, #86198f 0%, #a21caf 100%); }
+.module-module-4 { background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%); }
+.module-module-5 { background: linear-gradient(135deg, #be123c 0%, #e11d48 100%); }
+.module-module-6 { background: linear-gradient(135deg, #1f2937 0%, #374151 100%); }
+.module-module-7 { background: linear-gradient(135deg, #78350f 0%, #92400e 100%); }
+.module-module-8 { background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%); }
 
-.module-module-3 {
-  background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
-}
-
-.module-module-4 {
-  background: linear-gradient(135deg, #10b981 0%, #34d399 100%);
-}
-
-.module-module-5 {
-  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-}
-
-.module-module-6 {
-  background: linear-gradient(135deg, #374151 0%, #6b7280 100%);
-}
-
-.module-module-7 {
-  background: linear-gradient(135deg, #78350f 0%, #92400e 100%);
-}
-
-.module-module-8 {
-  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-}
-
+/* Module text content */
 .module-info {
-  padding: 20px;
+  padding: 18px 18px 20px;
 }
 
 .module-title {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 12px;
   line-height: 1.4;
@@ -315,32 +317,64 @@
   color: #ffffff;
 }
 
+/* "Read now →" inside module card */
 .module-view-btn {
   font-size: 13px;
-  color: #3b82f6;
+  color: #475569;
   background: none;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.course-detail-page.dark .module-view-btn {
+  color: #94a3b8;
 }
 
 .module-view-btn:hover {
-  transform: translateX(4px);
+  color: #3b82f6;
+  gap: 7px;
 }
 
-/* ==================== REFERENCE SECTION ==================== */
+/* ==================== RESOURCES SECTION ==================== */
+/* White rounded card container + 2-col resource grid */
 .reference-section {
   position: relative;
-  padding: 60px 24px 80px;
+  padding: 48px 24px 80px;
   z-index: 1;
 }
 
+.resources-detail-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 40px 40px;
+  border-radius: 28px;
+}
+
+.course-detail-page.light .resources-detail-wrapper {
+  background: #ffffff;
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.04);
+}
+
+.course-detail-page.dark .resources-detail-wrapper {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+}
+
 .section-heading-detail {
-  font-size: 38px;
+  font-size: 34px;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  line-height: 1.3;
 }
 
 .course-detail-page.light .section-heading-detail {
@@ -351,65 +385,74 @@
   color: #ffffff;
 }
 
+/* 2-col resource grid */
 .reference-list {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  max-width: 100%;
+  margin: 0 0 24px;
 }
 
+/* Individual resource item — row-style with badge + title + author + arrow icon */
 .reference-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
-  border-radius: 16px;
+  padding: 18px 22px;
+  border-radius: 14px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .course-detail-page.light .reference-item {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .course-detail-page.light .reference-item:hover {
-  transform: translateX(8px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .course-detail-page.dark .reference-item {
   background: rgba(30, 41, 59, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .course-detail-page.dark .reference-item:hover {
-  transform: translateX(8px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .reference-content {
   flex: 1;
+  min-width: 0;
 }
 
+/* Red "Reference" badge */
 .reference-badge {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 3px 10px;
   background: #dc2626;
   color: white;
-  border-radius: 12px;
+  border-radius: 999px;
   font-size: 10px;
   font-weight: 600;
   margin-bottom: 8px;
+  letter-spacing: 0.01em;
 }
 
 .reference-title {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   margin-bottom: 4px;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .course-detail-page.light .reference-title {
@@ -422,6 +465,7 @@
 
 .reference-author {
   font-size: 12px;
+  font-weight: 400;
 }
 
 .course-detail-page.light .reference-author {
@@ -432,8 +476,11 @@
   color: #9ca3af;
 }
 
+/* External link arrow icon */
 .reference-icon {
   flex-shrink: 0;
+  margin-left: 12px;
+  font-size: 16px;
 }
 
 .course-detail-page.light .reference-icon {
@@ -444,27 +491,53 @@
   color: #6b7280;
 }
 
-/* Navigation Buttons */
+/* "View all →" link below resource grid */
+.view-all-detail-link {
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.25s ease;
+}
+
+.course-detail-page.light .view-all-detail-link {
+  color: #374151;
+}
+
+.course-detail-page.dark .view-all-detail-link {
+  color: #9ca3af;
+}
+
+.view-all-detail-link:hover {
+  color: #3b82f6;
+}
+
+/* ==================== NAVIGATION BUTTONS ==================== */
+/* "← Previous module" / "Next module →" centred below resources */
 .navigation-buttons {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
   margin-top: 40px;
 }
 
 .nav-btn {
-  padding: 12px 28px;
+  padding: 11px 26px;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .course-detail-page.light .nav-btn {
   background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(203, 213, 225, 0.5);
+  border: 1px solid rgba(203, 213, 225, 0.6);
   color: #1e293b;
 }
 
@@ -473,7 +546,7 @@
   color: white;
   border-color: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
 }
 
 .course-detail-page.dark .nav-btn {
@@ -485,17 +558,28 @@
 .course-detail-page.dark .nav-btn:hover {
   background: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.5);
 }
 
 /* ==================== RESPONSIVE ==================== */
-@media (max-width: 768px) {
-  .hero-title-detail {
-    font-size: 32px;
+@media (max-width: 900px) {
+  .modules-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .overview-grid {
+  .reference-list {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title-detail {
+    font-size: 30px;
+  }
+
+  .overview-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .modules-grid {
@@ -504,9 +588,15 @@
 
   .navigation-buttons {
     flex-direction: column;
+    align-items: center;
   }
 
   .nav-btn {
     width: 100%;
+    justify-content: center;
+  }
+
+  .resources-detail-wrapper {
+    padding: 28px 20px;
   }
 }

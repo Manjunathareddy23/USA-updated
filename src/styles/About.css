@@ -1,33 +1,174 @@
-/* About.css - About Page Styling */
+/* About.css - About Page Styling - COMPLETE FIX */
 
 @import './Home.css';
 
-/* ==================== ABOUT PAGE ==================== */
+/* ==================== ABOUT PAGE BACKGROUND ==================== */
 .about-page {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
 }
 
-/* ==================== ABOUT HERO ==================== */
+.about-page.light {
+  background: #f0f9ff;
+}
+
+.about-page.light::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(186, 230, 253, 0.6) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 35% at 50% 100%, rgba(224, 242, 254, 0.7) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-page.light::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(186, 230, 253, 0.12) 0px, transparent 1px, transparent 40px, rgba(186, 230, 253, 0.12) 41px),
+    repeating-linear-gradient(90deg, rgba(186, 230, 253, 0.12) 0px, transparent 1px, transparent 40px, rgba(186, 230, 253, 0.12) 41px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-page.dark {
+  background: #0a0f1e;
+}
+
+.about-page.dark::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 0%, rgba(30, 58, 138, 0.4) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(15, 23, 42, 0.8) 0%, transparent 60%),
+    linear-gradient(180deg, #0a0f1e 0%, #151b2e 30%, #0f1829 70%, #0a0f1e 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.about-page.dark::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(59, 130, 246, 0.06) 0px, transparent 1px, transparent 50px, rgba(59, 130, 246, 0.06) 51px),
+    repeating-linear-gradient(90deg, rgba(59, 130, 246, 0.06) 0px, transparent 1px, transparent 50px, rgba(59, 130, 246, 0.06) 51px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ==================== HERO SECTION — NAVBAR INSIDE CARD ==================== */
 .about-hero {
   position: relative;
-  padding: 160px 24px 100px;
-  text-align: center;
+  padding: 48px 24px 80px;
+  display: flex;
+  justify-content: center;
   z-index: 1;
 }
 
-.about-hero-content {
-  max-width: 900px;
-  margin: 0 auto;
+/* The big glassmorphic card that wraps both navbar AND hero content */
+.about-hero-card {
+  max-width: 1100px;
+  width: 100%;
+  border-radius: 40px;
+  backdrop-filter: blur(60px);
+  -webkit-backdrop-filter: blur(60px);
+  position: relative;
+  overflow: visible;
+  transition: all 0.5s ease;
 }
 
+.about-page.light .about-hero-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(255, 255, 255, 0.78) 50%,
+    rgba(255, 255, 255, 0.68) 100%
+  );
+  border: 1.5px solid rgba(186, 230, 253, 0.4);
+  box-shadow:
+    0 25px 80px rgba(59, 130, 246, 0.08),
+    0 10px 40px rgba(0, 0, 0, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.about-page.dark .about-hero-card {
+  background: rgba(15, 24, 41, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ==================== NAVBAR (inside hero card) ==================== */
+/* Reuse .navbar and .navbar-container from Home.css, but scope colours */
+.about-page .navbar {
+  padding: 28px 32px 0;
+}
+
+.about-page .navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 14px 36px;
+  min-height: 64px;
+  border-radius: 999px;
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  transition: all 0.3s ease;
+}
+
+.about-page.light .navbar-container {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(250,252,255,0.9) 100%);
+  border: 1px solid rgba(186, 230, 253, 0.4);
+  box-shadow: 0 4px 24px rgba(59,130,246,0.08), 0 2px 8px rgba(0,0,0,0.02), inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.about-page.dark .navbar-container {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* HERO CONTENT AREA */
+.about-hero-content {
+  padding: 52px 64px 72px;
+  text-align: center;
+}
+
+/* Small pill badge */
+.about-hero-badge {
+  display: inline-block;
+  padding: 11px 26px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.about-page.light .about-hero-badge {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(203, 213, 225, 0.4);
+  color: #334155;
+}
+
+.about-page.dark .about-hero-badge {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #60a5fa;
+}
+
+/* Large two-tone title */
 .about-hero-title {
   font-size: 56px;
   font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  margin-bottom: 44px;
 }
 
 .about-page.light .about-hero-title {
@@ -38,60 +179,135 @@
   color: #ffffff;
 }
 
-.about-hero-subtitle {
-  font-size: 19px;
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 0 auto;
+/* Second line is muted/grey */
+.about-hero-title .title-muted {
+  color: #94a3b8;
 }
 
-.about-page.light .about-hero-subtitle {
-  color: #64748b;
+/* 3 icon + label props row */
+.about-hero-props {
+  display: flex;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
 }
 
-.about-page.dark .about-hero-subtitle {
+.about-hero-prop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.about-hero-prop-icon {
+  font-size: 32px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-hero-prop-label {
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.about-page.light .about-hero-prop-label {
+  color: #475569;
+}
+
+.about-page.dark .about-hero-prop-label {
   color: #9ca3af;
 }
 
-/* ==================== STATS SECTION ==================== */
-.stats-section {
-  position: relative;
-  padding: 60px 24px;
-  z-index: 1;
-}
-
+/* ==================== CONTAINER ==================== */
 .container-about {
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* ==================== MISSION SECTION ==================== */
+.mission-section {
+  position: relative;
+  padding: 72px 24px 64px;
+  z-index: 1;
+  text-align: center;
+}
+
+.section-heading-about {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  margin-bottom: 32px;
+  letter-spacing: -0.02em;
+}
+
+.about-page.light .section-heading-about {
+  color: #111827;
+}
+
+.about-page.dark .section-heading-about {
+  color: #ffffff;
+}
+
+.mission-content {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.mission-text {
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.about-page.light .mission-text {
+  color: #374151;
+}
+
+.about-page.dark .mission-text {
+  color: #d1d5db;
+}
+
+/* ==================== STATS SECTION ==================== */
+.stats-section {
+  position: relative;
+  padding: 20px 24px 64px;
+  z-index: 1;
+}
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 20px;
 }
 
 .stat-card {
   padding: 40px 24px;
-  border-radius: 20px;
+  border-radius: 24px;
   text-align: center;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: all 0.3s ease;
 }
 
 .about-page.light .stat-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(186, 230, 253, 0.5);
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.06), 0 1px 4px rgba(0,0,0,0.03);
 }
 
 .about-page.light .stat-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 48px rgba(59, 130, 246, 0.12), 0 4px 16px rgba(0,0,0,0.04);
 }
 
 .about-page.dark .stat-card {
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(15, 24, 41, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
@@ -116,166 +332,129 @@
   font-weight: 500;
 }
 
-.about-page.light .stat-label {
-  color: #6b7280;
-}
-
-.about-page.dark .stat-label {
-  color: #9ca3af;
-}
-
-/* ==================== MISSION SECTION ==================== */
-.mission-section {
-  position: relative;
-  padding: 80px 24px;
-  z-index: 1;
-}
-
-.section-heading-about {
-  font-size: 42px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.about-page.light .section-heading-about {
-  color: #111827;
-}
-
-.about-page.dark .section-heading-about {
-  color: #ffffff;
-}
-
-.mission-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.mission-text {
-  font-size: 17px;
-  line-height: 1.8;
-  margin-bottom: 20px;
-}
-
-.about-page.light .mission-text {
-  color: #374151;
-}
-
-.about-page.dark .mission-text {
-  color: #d1d5db;
-}
+.about-page.light .stat-label { color: #6b7280; }
+.about-page.dark .stat-label { color: #9ca3af; }
 
 /* ==================== VALUES SECTION ==================== */
 .values-section {
   position: relative;
-  padding: 80px 24px;
+  padding: 64px 24px;
   z-index: 1;
 }
+
+.values-bento-heading {
+  font-size: 40px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+
+.about-page.light .values-bento-heading { color: #111827; }
+.about-page.dark .values-bento-heading { color: #ffffff; }
 
 .values-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 48px;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .value-card-about {
   padding: 32px 28px;
-  border-radius: 20px;
+  border-radius: 24px;
   text-align: center;
   backdrop-filter: blur(20px);
-  transition: all 0.4s ease;
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.35s ease;
 }
 
 .about-page.light .value-card-about {
   background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(186, 230, 253, 0.5);
+  box-shadow: 0 4px 24px rgba(59,130,246,0.06), 0 1px 4px rgba(0,0,0,0.03);
 }
 
 .about-page.light .value-card-about:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(59,130,246,0.1), 0 4px 12px rgba(0,0,0,0.04);
+  border-color: rgba(59,130,246,0.2);
 }
 
 .about-page.dark .value-card-about {
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(15, 24, 41, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
 
 .about-page.dark .value-card-about:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  border-color: rgba(59, 130, 246, 0.2);
 }
 
 .value-icon {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 16px;
 }
 
 .value-title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
 }
 
-.about-page.light .value-title {
-  color: #111827;
-}
-
-.about-page.dark .value-title {
-  color: #ffffff;
-}
+.about-page.light .value-title { color: #111827; }
+.about-page.dark .value-title { color: #ffffff; }
 
 .value-description {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.about-page.light .value-description {
-  color: #6b7280;
-}
-
-.about-page.dark .value-description {
-  color: #9ca3af;
-}
+.about-page.light .value-description { color: #6b7280; }
+.about-page.dark .value-description { color: #9ca3af; }
 
 /* ==================== TEAM SECTION ==================== */
 .team-section {
   position: relative;
-  padding: 80px 24px;
+  padding: 64px 24px;
   z-index: 1;
 }
 
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 48px;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 40px auto 0;
 }
 
 .team-card {
   padding: 36px 28px;
-  border-radius: 20px;
+  border-radius: 24px;
   text-align: center;
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   transition: all 0.3s ease;
 }
 
 .about-page.light .team-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(229, 231, 235, 0.6);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(186, 230, 253, 0.5);
+  box-shadow: 0 4px 24px rgba(59,130,246,0.06), 0 1px 4px rgba(0,0,0,0.03);
 }
 
 .about-page.light .team-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 12px 48px rgba(59,130,246,0.1);
 }
 
 .about-page.dark .team-card {
-  background: rgba(30, 41, 59, 0.5);
+  background: rgba(15, 24, 41, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 }
@@ -285,192 +464,160 @@
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
 }
 
-.team-icon {
-  margin-bottom: 20px;
-}
+.team-icon { margin-bottom: 16px; }
 
 .team-name {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
 }
 
-.about-page.light .team-name {
-  color: #111827;
-}
-
-.about-page.dark .team-name {
-  color: #ffffff;
-}
+.about-page.light .team-name { color: #111827; }
+.about-page.dark .team-name { color: #ffffff; }
 
 .team-role {
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
   color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .team-description {
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
-.about-page.light .team-description {
-  color: #6b7280;
-}
-
-.about-page.dark .team-description {
-  color: #9ca3af;
-}
+.about-page.light .team-description { color: #6b7280; }
+.about-page.dark .team-description { color: #9ca3af; }
 
 /* ==================== CTA SECTION ==================== */
 .cta-section-about {
   position: relative;
-  padding: 80px 24px 100px;
+  padding: 64px 24px 100px;
   z-index: 1;
 }
 
 .cta-card-about {
   max-width: 800px;
   margin: 0 auto;
-  padding: 60px 48px;
-  border-radius: 28px;
+  padding: 64px 52px;
+  border-radius: 32px;
   text-align: center;
   backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
 }
 
 .about-page.light .cta-card-about {
-  background: linear-gradient(
-    135deg,
-    rgba(220, 252, 231, 0.7) 0%,
-    rgba(187, 247, 208, 0.6) 100%
-  );
-  border: 1px solid rgba(16, 185, 129, 0.2);
-  box-shadow: 0 10px 40px rgba(16, 185, 129, 0.1);
+  background: linear-gradient(135deg, rgba(219,234,254,0.85) 0%, rgba(191,219,254,0.75) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(59,130,246,0.1), 0 2px 8px rgba(0,0,0,0.03);
 }
 
 .about-page.dark .cta-card-about {
-  background: linear-gradient(
-    135deg,
-    rgba(6, 78, 59, 0.4) 0%,
-    rgba(5, 46, 38, 0.3) 100%
-  );
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  box-shadow: 0 10px 40px rgba(16, 185, 129, 0.15);
+  background: linear-gradient(135deg, rgba(30,58,138,0.45) 0%, rgba(30,64,175,0.35) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 8px 32px rgba(59,130,246,0.15);
 }
 
-.cta-heading {
-  font-size: 38px;
+.cta-heading-about {
+  font-size: 36px;
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
 }
 
-.about-page.light .cta-heading {
-  color: #111827;
-}
+.about-page.light .cta-heading-about { color: #111827; }
+.about-page.dark .cta-heading-about { color: #ffffff; }
 
-.about-page.dark .cta-heading {
-  color: #ffffff;
-}
-
-.cta-text {
-  font-size: 17px;
+.cta-text-about {
+  font-size: 16px;
+  line-height: 1.65;
   margin-bottom: 32px;
 }
 
-.about-page.light .cta-text {
-  color: #6b7280;
-}
+.about-page.light .cta-text-about { color: #6b7280; }
+.about-page.dark .cta-text-about { color: #9ca3af; }
 
-.about-page.dark .cta-text {
-  color: #9ca3af;
-}
-
-.cta-buttons {
+.cta-buttons-about {
   display: flex;
   justify-content: center;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .btn-cta-primary-about {
-  padding: 16px 40px;
+  padding: 15px 40px;
   background: #3b82f6;
   border: none;
-  border-radius: 14px;
+  border-radius: 13px;
   color: white;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.35);
 }
 
 .btn-cta-primary-about:hover {
   background: #2563eb;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 28px rgba(59,130,246,0.5);
 }
 
 .btn-cta-secondary-about {
-  padding: 16px 40px;
-  border-radius: 14px;
-  font-size: 16px;
+  padding: 15px 40px;
+  border-radius: 13px;
+  font-size: 15px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .about-page.light .btn-cta-secondary-about {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(203, 213, 225, 0.5);
+  background: rgba(255,255,255,0.9);
+  border: 1px solid rgba(203,213,225,0.5);
   color: #1e293b;
 }
 
 .about-page.light .btn-cta-secondary-about:hover {
-  background: rgba(255, 255, 255, 1);
+  background: white;
   border-color: #3b82f6;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 6px 20px rgba(59,130,246,0.2);
 }
 
 .about-page.dark .btn-cta-secondary-about {
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(30,41,59,0.8);
+  border: 1px solid rgba(255,255,255,0.1);
   color: #ffffff;
 }
 
 .about-page.dark .btn-cta-secondary-about:hover {
-  background: rgba(30, 41, 59, 1);
+  background: rgba(30,41,59,1);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
 }
 
 /* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (max-width: 768px) {
-  .about-hero-title {
-    font-size: 36px;
-  }
-
-  .stats-grid,
-  .values-grid,
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .cta-card-about {
-    padding: 40px 28px;
-  }
-
-  .cta-heading {
-    font-size: 28px;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-  }
-
-  .btn-cta-primary-about,
-  .btn-cta-secondary-about {
-    width: 100%;
-  }
+  .about-hero-card { border-radius: 28px; }
+  .about-hero-content { padding: 40px 28px 56px; }
+  .about-hero-title { font-size: 36px; }
+  .about-hero-props { gap: 28px; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: 1fr; }
+  .section-heading-about { font-size: 30px; }
+  .values-bento-heading { font-size: 30px; }
+  .cta-card-about { padding: 40px 28px; }
+  .cta-heading-about { font-size: 26px; }
+  .cta-buttons-about { flex-direction: column; }
+  .btn-cta-primary-about, .btn-cta-secondary-about { width: 100%; }
 }
